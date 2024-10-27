@@ -32,8 +32,8 @@ let bottomPipeImg;
 
 // Game physics
 let velocityX = -2; // pipe speed moving sideways, right to left
-let velocityY = 0; // bird jump speed.
-let gravity = 0.4; // the bird will come down after jumping.
+let velocityY = -5; // bird jump speed.
+let gravity = 0.3; // the bird will come down after jumping.
 
 let gameOver = false;
 let score = 0;
@@ -51,16 +51,16 @@ window.onload = function () {
 
   // load Images
   birdImg = new Image();
-  birdImg.src = "./flappybird.png/";
+  birdImg.src = "./image/flappybird.png";
   birdImg.onload = function () {
     context.drawImage(birdImg, bird.x, bird.y, bird.width, bird.height);
   };
 
   topPipeImg = new Image();
-  topPipeImg.src = "./toppipe.png";
+  topPipeImg.src = "./image/toppipe.png";
 
   bottomPipeImg = new Image();
-  bottomPipeImg.src = "./bottompipe.png";
+  bottomPipeImg.src = "./image/bottompipe.png";
 
   requestAnimationFrame(update);
   setInterval(placePipes, 1500); // 1.5 seconde
@@ -69,9 +69,9 @@ window.onload = function () {
 
 function update() {
   requestAnimationFrame(update);
-  if (gameOver) {
-    return;
-  }
+
+  if (gameOver) return;
+
   context.clearRect(0, 0, board.width, board.height);
 
   // birth
@@ -125,7 +125,8 @@ function placePipes() {
   }
 
   let randomPipeY = pipeY - pipeHeight / 4 - Math.random() * (pipeHeight / 2);
-  let openingSpace = board.height / 4;
+  // let openingSpace = board.height / 4;
+  let openingSpace = board.height / 4 - Math.min(score * 5, 100); // Pipes get closer as the score increases
 
   let topPipe = {
     img: topPipeImg,
@@ -170,3 +171,4 @@ function detectCollision(a, b) {
     a.y + a.height > b.y
   );
 }
+
