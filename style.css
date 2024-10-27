@@ -1,16 +1,3 @@
-/* body {
-  font-family: "Courier New", Courier, monospace;
-  text-align: center;
-  margin: 0 auto; 
-  overflow: hidden; 
-}
-
-#board {
-  display: block;
-  background-image: url(./flappybirdbg.png);
-  background-size: cover; 
-} */
-
 body {
   font-family: "Courier New", Courier, monospace;
   text-align: center;
@@ -26,9 +13,5 @@ body {
 
 #board {
   display: block;
-  background-image: url(./flappybirdbg.png);
-
-  /* width: 100%;
-  height: 100%; */
-  /* margin: 0 auto; */
+  background-image: url(./image/flappybirdbg.png);
 }
